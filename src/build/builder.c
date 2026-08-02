@@ -346,6 +346,16 @@ void cax_builder_run(void) {
                 process_collection_dir(sub_path, entry->d_name, coll_array);
                 cax_object_set_pointer(collections_obj, entry->d_name, coll_array);
                 cax_object_set_pointer(global_data, entry->d_name, coll_array);
+            }
+        }
+        rewinddir(content_dir);
+        while ((entry = readdir(content_dir))!= NULL) {
+            if (entry->d_name[0] == '.') continue;
+            char sub_path[8192];
+            snprintf(sub_path, sizeof(sub_path), "content/%s", entry->d_name);
+            if (cax_is_directory(sub_path)) {
+                CAXArray *coll_array = (CAXArray*)cax_object_get_pointer(collections_obj, entry->d_name);
+                if (!coll_array) continue;
                 render_collection_items(sub_path, entry->d_name, coll_array, global_data);
                 for (int i = 0; i < coll_array->count; i++) cax_array_add(all_collections_master, coll_array->items[i]);
                 char out_sub_dir[512];
