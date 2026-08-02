@@ -1,0 +1,8 @@
+---
+layout: minim.cax
+---
+{% include minimalis/hero.cax %}
+{% include minimalis/intro.cax %}
+{% include minimalis/card.cax %}
+{% include minimalis/main.cax %}
+{% include minimalis/footer.cax %}

@@ -1,0 +1,19 @@
+title: CAX SSG
+description: A simple static site generator built with C !!
+image: /img/banner.webp
+logo: /img/logo.webp
+url: /minimalis/
+author: AXCORA
+
+nav_title: CAX SSG
+nav_list: 
+  - name: Home
+    url: /minimalis/
+  - name: Posts
+    url: /minimal/
+  - name: Docs
+    url: /docs/
+  - name: Download
+    url: https://creativitaz.gumroad.com/l/cax-minimalis
+  - name: Github
+    url: https://github.com/mesinkasir/cax-minimalis

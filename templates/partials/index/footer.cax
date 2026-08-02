@@ -1,0 +1,9 @@
+<footer class="footer">
+<div class="container">
+<div style="margin-bottom:10px"><strong><a href="{{metadata.url}}" class="inhe">{{footer.title}}</a></strong> — {{footer.description}}</div>
+<div>CAX.AXCORA.COM • <a href="#">Back to top ↑</a></div>
+<div style="margin-top:14px;opacity:0.5;letter-spacing:0.18em;font-family:Cinzel">
+⚙ 〰  <a href="https://pycora.axcora.com" target="_blank" rel="noopener" class="inhe">PYCORA</a> • <a href="https://ax.axcora.com" target="_blank" rel="noopener" class="inhe">AX</a> • <a href="https://ssg.axcora.com" target="_blank" rel="noopener" class="inhe">SSG</a> • <a href="https://luax.axcora.com" target="_blank" rel="noopener" class="inhe">LUAX</a> • <a href="https://bax.axcora.com" target="_blank" rel="noopener" class="inhe">BAX</a> • <a href="https://markdownuts.axcora.com" target="_blank" rel="noopener" class="inhe">MARKDOWNUTS</a> 〰 ⚙
+</div>
+</div>
+</footer>

@@ -1,0 +1,8 @@
+<section id="get-started" class="section">
+    <div class="container">
+      <h2 class="section-title"><a href="{{metadata.url}}" class="inhe">{{faq.title}}</a></h2>
+      <p class="section-sub">{{faq.description}}</p>
+      <div class="accordion trans" id="accordion"></div>
+    </div>
+    <p class="section-sub" style="margin-top:20px;"><a href="{{about.button.url}}" class="btn btn-ghost">{{about.button.text}}</a> <a href="{{about.button1.url}}" class="btn btn-ghost">{{about.button1.text}}</a></p>
+</section>

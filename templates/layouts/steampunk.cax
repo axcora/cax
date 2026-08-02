@@ -1,0 +1,19 @@
+<img class="gear" src="img/gear_transparent.webp" style="top:15%; left:3%;" alt="{{metadata.url}}">
+<img class="gear" src="img/gears.webp" style="top:40%; left:70%; animation-duration:15s; width:100px; height:100px;" alt="{{metadata.url}}">
+<img class="gear" src="img/gear_transparent.webp" style="top:65%; left:65%; width:200px; height:200px;" alt="{{metadata.url}}">
+<img class="gear" src="img/icon_mission.webp" style="top:60%; left:60%; animation-duration:8s; width:100px; height:100px;" alt="{{metadata.url}}">
+<div class="clock"><img src="img/clock_transparent.webp" alt="clock"></div>
+<div class="airship"><img src="img/airship_transparent.webp" alt="{{metadata.url}}"></div>
+<div class="airship1"><img src="img/airship.webp" alt="{{metadata.url}}"></div>
+<div class="smoke" style="left:30%; animation-delay:0s;"></div>
+<div class="smoke" style="left:50%; animation-delay:1s;"></div>
+<div class="smoke" style="left:70%; animation-delay:0s;"></div>
+<div class="smoke" style="left:40%; animation-delay:1s;"></div>
+<div class="smoke" style="left:60%; animation-delay:2s;"></div>
+<div class="smoke" style="left:10%; animation-delay:2s;"></div>
+<div class="smoke" style="left:90%; animation-delay:0s;"></div>
+<div class="smoke" style="left:80%; animation-delay:1s;"></div>
+<div class="smoke" style="left:20%; animation-delay:1s;"></div>
+<div class="smoke" style="left:15%; animation-delay:0s;"></div>
+<div class="smoke" style="left:55%; animation-delay:0s;"></div>
+<div class="smoke" style="left:35%; animation-delay:1s;"></div>

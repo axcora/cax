@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include index/seo.cax %}
+</head>
+<body>
+<div class="cax-root">
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="gears-layer" aria-hidden="true"><svg id="gears-svg" viewBox="0 0 1200 1000" preserveAspectRatio="xMidYMid slice"></svg></div>
+{% include index/nav.cax %}
+{% include index/hero.cax %}
+<div class="ornament">〰 ⚙ 〰</div>
+{% include index/about.cax %}
+<div class="ornament">〰 ⚙ 〰</div>
+{% include index/features.cax %}
+<div class="ornament">〰 ⚙ 〰</div>
+{% include index/faq.cax %}
+<div class="ornament">〰 ⚙ 〰</div>
+{% include index/support.cax %}
+{% include index/footer.cax %}
+</div>
+<img class="gear" src="{{media.gear}}" style="top:15%; left:3%;" alt="{{description}}">
+<img class="gear" loading="lazy" src="{{media.gear1}}" style="top:40%; left:70%; animation-duration:15s; width:100px; height:100px;" alt="{{title}}">
+<img class="gear" src="{{media.gear3}}" loading="lazy" style="top:65%; left:65%; width:200px; height:200px;" alt="{{hero.title}}">
+<img class="gear" src="{{media.gear4}}" loading="lazy" style="top:60%; left:60%; animation-duration:8s; width:100px; height:100px;" alt="{{hero.title2}}">
+<div class="clock"><img src="{{media.clock}}"  alt="{{metadata.title}}"></div>
+<div class="airship"><img src="{{media.ship}}" loading="lazy" alt="{{title}}"></div>
+<div class="airship1"><img src="{{media.ship1}}" alt="{{description}}"></div>
+<div class="smoke" style="left:30%; animation-delay:0s;"></div>
+<div class="smoke" style="left:50%; animation-delay:1s;"></div>
+<div class="smoke" style="left:70%; animation-delay:0s;"></div>
+<div class="smoke" style="left:40%; animation-delay:1s;"></div>
+<div class="smoke" style="left:60%; animation-delay:2s;"></div>
+<div class="smoke" style="left:10%; animation-delay:2s;"></div>
+<div class="smoke" style="left:90%; animation-delay:0s;"></div>
+<div class="smoke" style="left:80%; animation-delay:1s;"></div>
+<div class="smoke" style="left:20%; animation-delay:1s;"></div>
+<div class="smoke" style="left:15%; animation-delay:0s;"></div>
+<div class="smoke" style="left:55%; animation-delay:0s;"></div>
+<div class="smoke" style="left:35%; animation-delay:1s;"></div>
+{% include index/scripts.cax %}
+</body>
+</html>

@@ -1,0 +1,253 @@
+<script>
+const CODE_LINES = [
+  {% for line in metadata.terminal %}
+  "$ {{ line.text }}",
+  {% endfor %}
+];
+const ACC_DATA = [
+
+{title:"1. Prerequisites", html:`<p>Before forging your site, ensure your workshop is equipped with the following instruments:</p><ul><li><code>GCC</code> or <code>Clang</code> — C11 compatible compiler</li><li><code>GNU Make 4.0+</code> — for orchestrating the build</li><li><code>libcurl</code> — for remote content fetching (optional)</li><li>POSIX shell environment — Linux, macOS, or WSL2</li></ul><p class="muted">Memory footprint under 5MB at build time. No Node.js, no Ruby, no bloat.</p>`},
+
+{title:"2. Installation", html:`<p>CAX SSG is a single binary — zero dependencies, zero runtime.</p><h4>Linux &amp; macOS</h4><pre><code># Clone the repository
+git clone https://github.com/mesinkasir/cax.git
+cd cax
+
+# Build from source
+make linux
+# or
+make -j4
+
+# Install globally
+sudo make install
+# or copy binary manually
+sudo cp cax /usr/local/bin/
+
+# Verify installation
+cax --version</code></pre><h4>Windows</h4><pre><code># Using MinGW or MSYS2
+git clone https://github.com/mesinkasir/cax.git
+cd cax
+
+# Build
+mingw32-make
+
+# The binary cax.exe is ready to use
+# Add to PATH or use directly
+
+# Verify installation
+cax.exe --version</code></pre><h4>macOS (Apple Silicon &amp; Intel)</h4><pre><code># Install Xcode Command Line Tools first
+xcode-select --install
+
+# Clone and build
+git clone https://github.com/mesinkasir/cax.git
+cd cax
+make linux
+
+# Install
+sudo cp cax /usr/local/bin/
+
+# Verify
+cax --version</code></pre><p>The binary is a single static executable — <strong>~1.2MB</strong>. No Node.js, no Python, no Ruby, no runtime.</p>`},
+
+{title:"3. Customize Your Site", html:`<p>All elegance is controlled via <code>metadata.json</code> — no labyrinth of YAML.</p><pre><code>{
+  "title": "Atelier No. 5",
+  "author": "C. A. Xavier",
+  "description": "Horological essays & brass-bound thoughts",
+  "url": "https://example.com",
+  "theme": {
+    "primary": "#b8860b",
+    "font_heading": "Cinzel",
+    "font_body": "Lora"
+  },
+  "build": {
+    "minify": true,
+    "drafts": false
+  }
+}</code></pre><p>Templates use minimalist syntax: <code> { { title } }</code>, <code>{ % for tag in tags % }</code>.</p>`},
+  {title:"4. Build Your Site", html:`<pre><code># Build your project for production
+cax build            # development build
+# generate production folder
+/site/
+cax start            # run your site on local
+# open localhost:8080</code></pre><p>Release builds perform aggressive caching, critical CSS extraction, and image quantization — all in native C.</p>`},
+{title:"5. Content Structure", html:`<p>CAX SSG uses a simple content structure:</p><pre><code>content/
+├── index.md          # → site/index.html (homepage)
+├── about.md          # → site/about/index.html
+├── features.md       # → site/features/index.html
+├── posts/            # COLLECTION: posts
+│   ├── post-1.md     # → site/posts/post-1/index.html
+│   ├── post-2.md     # → site/posts/post-2/index.html
+│   └── post-3.md     # → site/posts/post-3/index.html
+├── services/         # COLLECTION: services (CUSTOM)
+│   ├── web-dev.md    # → site/services/web-dev/index.html
+│   └── consulting.md # → site/services/consulting/index.html
+└── projects/         # COLLECTION: projects (CUSTOM)
+    ├── project-a.md  # → site/projects/project-a/index.html
+    └── project-b.md  # → site/projects/project-b/index.html</code></pre><p>Each markdown file supports frontmatter with YAML syntax:</p><pre><code>---
+title: First Blog Post in C
+description: Exploring static site generation speed.
+layout: post.cax
+tags: ["c", "blog", "tutorial"]
+date: 2024-01-01
+author: CAX Team
+image: /img/post-1.png
+---
+This is the first article inside our automated collection loop.</code></pre><p>Frontmatter fields are accessible in templates via <code>{ { title } }</code>, <code>{ { description } }</code>, <code>{ { tags } }</code>, etc.</p><p>For collections, each subdirectory automatically generates an index page with pagination and tag pages.</p>`},
+
+{title:"6. Deploy to Production", html:`<p>CAX SSG generates static files in <code>site/</code> — ready for any hosting platform.</p><h4>GitHub Pages (via Actions)</h4><pre><code>name: Deploy CAX SSG to GitHub Pages
+on:
+  push:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CAX SSG
+        run: |
+          sudo apt-get update && sudo apt-get install -y gcc make
+          make linux
+          ./cax build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: \${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site</code></pre><h4>Vercel</h4><pre><code># Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod ./site</code></pre><h4>Netlify</h4><pre><code># Using Netlify CLI
+npm i -g netlify-cli
+netlify deploy --prod --dir=./site
+
+# Or drag & drop site/ folder to Netlify dashboard</code></pre><h4>Cloudflare Pages</h4><pre><code># Connect your GitHub repo to Cloudflare Pages
+# Build command: make linux && ./cax build
+# Output directory: site</code></pre><h4>Manual (Any Hosting)</h4><pre><code># Just upload the site/ folder to your hosting provider
+# Works with: Apache, Nginx, S3, Firebase, Any Static Hosting
+scp -r site/ user@server:/var/www/html/</code></pre><p>CAX SSG outputs pure static HTML — no runtime, no dependencies, no lock-in.</p>`},
+
+  {title:"7. Advanced Usage", html:`<ul> <li><strong>Partials &amp; Layouts:</strong> <code>{ % include header.cax % }</code> includes nested brass-bound components from <code>templates/partials/</code>.</li> <li><strong>Nested Layout Inheritance:</strong> <code>layout</code> allows child layouts to extend parent layouts.</li> <li><strong>Collections:</strong> subdirectories like <code>content/posts/</code> auto-generate index and pagination.</li> <li><strong>Taxonomies:</strong> automatic tag pages from <code>tags: [c, ssg]</code> frontmatter — generates <code>/tags/c/</code> and <code>/tags/ssg/</code>.</li> <li><strong>Pagination:</strong> <code>cax_pagination_process(items, 5, output_dir, layout, global_data, name)</code> splits collections into pages.</li> <li><strong>JSON / YAML Data Files:</strong> any <code>.json</code> and <code>.yaml</code> in <code>_data/</code> becomes <code>{ { filename.key } }</code> in templates.</li> <li><strong>Custom Filters:</strong> <code>{ { content } }</code>, <code> { % for tag in tags % } </code>.</li> <li><strong>Sitemap &amp; Robots:</strong> auto-generated <code>sitemap.xml</code> and <code>robots.txt</code> on each build.</li> <li><strong>Hooks:</strong> <code>pre_build</code> and <code>post_build</code> shell hooks for alchemy and custom workflows.</li> <li><strong>Serve and Watch Mode:</strong> <code>cax start</code> for live reload or use <code>cax watch</code> — automatically rebuild when content or templates change.</li> <li><strong>Custom Output:</strong> <code>cax build --output dist/</code> override default <code>site/</code> directory.</li> </ul>`},
+  {title:"8. Platform-Specific Notes", html:`<table class="mini-table"><thead><tr><th>Platform</th><th>Notes</th></tr></thead><tbody><tr><td>Linux x64</td><td>Native. Static binary, musl compatible.</td></tr><tr><td>macOS 12+</td><td>Universal binary, codesigned. Use <code>brew install cax</code>.</td></tr><tr><td>Windows</td><td>WSL2 recommended. Native win32 build experimental.</td></tr><tr><td>ARM64 / Pi</td><td>Builds in &lt; 12s on Pi 4. Ideal for off-grid publishing.</td></tr></tbody></table>`},
+  {title:"9. Command Reference", html:`<table class="mini-table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>cax build</code></td><td>Render site to public/</td></tr><tr><td><code>cax start</code></td><td>Local server with live reload</td></tr><tr><td><code>cax new post “Title”</code></td><td>Create content stub</td></tr></tbody></table>`},
+  {title:"10. Performance", html:`<p>Benchmarks on a 1000-page site (M1 Air):</p><table class="mini-table"><thead><tr><th>Generator</th><th>Time</th><th>Binary</th></tr></thead><tbody><tr><td>CAX SSG</td><td><strong>0.42s</strong></td><td>1.2 MB</td></tr><tr><td>Hugo</td><td>0.89s</td><td>15 MB</td></tr><tr><td>Eleventy</td><td>8.4s</td><td>~180 MB dep</td></tr><tr><td>Gatsby</td><td>34s</td><td>~350 MB dep</td></tr></tbody></table><p class="muted">Zero runtime JavaScript by default. Pure HTML/CSS. Lighthouse 100/100/100/100.</p>`},
+  {title:"11. FAQ", html:`<p><strong>Why C?</strong> — Longevity. A C program compiled today will run in 2050. Dependencies rot, C endures.</p><p><strong>Is it extensible?</strong> — Via C plugins (.so) and shell hooks. No embedded Lua/JS tax.</p><p><strong>License?</strong> — MIT. Commercial use embraced.</p><p><strong>Does it support Markdown?</strong> — Yes , JSON data, markdown frontmatter YAML concept..</p>`}
+];
+
+const gearIconSVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 9 15a1.65 1.65 0 0 0-1-1.51V13a2 2 0 0 1 0-4v-.5a1.65 1.65 0 0 0 1-1.51 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 13.5 3c.26 0 .5.1.7.28A1.65 1.65 0 0 0 15 5V5.5a2 2 0 0 1 0 4v.5c0 .6.4 1.1 1 1.5Z"/></svg>`;
+
+const navLinks = document.getElementById('navLinks');
+const ham = document.getElementById('hamburger');
+let menuOpen=false;
+ham.addEventListener('click',()=>{
+  menuOpen=!menuOpen;
+  navLinks.classList.toggle('show',menuOpen);
+  document.getElementById('h1').style.transform=menuOpen?'rotate(45deg) translate(5px,5px)':'none';
+  document.getElementById('h2').style.opacity=menuOpen?'0':'1';
+  document.getElementById('h3').style.transform=menuOpen?'rotate(-45deg) translate(5px,-5px)':'none';
+  ham.setAttribute('aria-expanded',menuOpen);
+});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  menuOpen=false; navLinks.classList.remove('show');
+  document.getElementById('h1').style.transform='none';document.getElementById('h2').style.opacity='1';document.getElementById('h3').style.transform='none';
+}));
+
+const codePre = document.getElementById('codePre');
+let linesState=["","","","",""], charIdx=[0,0,0,0,0], lineIdx=0;
+function renderCode(){
+  codePre.innerHTML = CODE_LINES.map((full,i)=>{
+    const txt = linesState[i];
+    const isCurrent = i===lineIdx && charIdx[i] < full.length;
+    return `<span class="code-line">${txt}${isCurrent?'<span class="cursor"></span>':''}</span>`;
+  }).join('');
+}
+renderCode();
+function typeLoop(){
+  if(lineIdx>=CODE_LINES.length) return;
+  const full = CODE_LINES[lineIdx];
+  if(charIdx[lineIdx] < full.length){
+    linesState[lineIdx]=full.slice(0,charIdx[lineIdx]+1);
+    charIdx[lineIdx]++;
+    renderCode();
+    setTimeout(typeLoop, 18+Math.random()*30);
+  } else {
+    if(lineIdx < CODE_LINES.length-1){
+      lineIdx++;
+      setTimeout(typeLoop, 220);
+    }
+  }
+}
+typeLoop();
+
+const heroBg = document.getElementById('heroBg');
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY*0.22;
+  hero.style.setProperty('--parallax', y+'px');
+},{passive:true});
+
+const gearsSvg = document.getElementById('gears-svg');
+const gearData = [
+  {cx:210, cy:220, teeth:28, r0:55, r1:120, r2:145, speed:0.08},
+  {cx:950, cy:520, teeth:36, r0:70, r1:165, r2:195, speed:-0.05},
+  {cx:600, cy:780, teeth:22, r0:40, r1:95, r2:115, speed:0.06}
+];
+let rots=[12,-8,25];
+function gearPath(teeth,r0,r1,r2){
+  let p=""; const step=Math.PI*2/teeth;
+  for(let i=0;i<teeth;i++){
+    const a0=i*step, a1=a0+step*0.35, a2=a0+step*0.65, a3=a0+step;
+    const x0=Math.cos(a0)*r1, y0=Math.sin(a0)*r1;
+    const x1=Math.cos(a1)*r2, y1=Math.sin(a1)*r2;
+    const x2=Math.cos(a2)*r2, y2=Math.sin(a2)*r2;
+    const x3=Math.cos(a3)*r1, y3=Math.sin(a3)*r1;
+    const xo=Math.cos(a3)*r0, yo=Math.sin(a3)*r0;
+    const xi=Math.cos(a0)*r0, yi=Math.sin(a0)*r0;
+    if(i===0) p+=`M ${x0},${y0} `;
+    p+=`L ${x1},${y1} L ${x2},${y2} L ${x3},${y3} L ${xo},${yo} L ${xi},${yi} `;
+  }
+  p+="Z"; p+=` M 0,${-r0*0.28} A ${r0*0.28},${r0*0.28} 0 1 0 0,${r0*0.28} A ${r0*0.28},${r0*0.28} 0 1 0 0,${-r0*0.28} Z`;
+  return p;
+}
+gearData.forEach((g,i)=>{
+  const grp=document.createElementNS("http://www.w3.org/2000/svg","g");
+  grp.setAttribute("transform",`translate(${g.cx},${g.cy}) rotate(${rots[i]})`);
+  grp.setAttribute("class","gear-group");
+  const path=document.createElementNS("http://www.w3.org/2000/svg","path");
+  path.setAttribute("d", gearPath(g.teeth,g.r0,g.r1,g.r2));
+  path.setAttribute("fill","none"); path.setAttribute("stroke","#d4a017"); path.setAttribute("stroke-width","1.2"); path.setAttribute("stroke-opacity","0.22");
+  grp.appendChild(path);
+  const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+  c.setAttribute("r",String(g.r0*0.18)); c.setAttribute("fill","none"); c.setAttribute("stroke","#b8860b"); c.setAttribute("stroke-opacity","0.18"); c.setAttribute("stroke-width","1");
+  grp.appendChild(c);
+  gearsSvg.appendChild(grp);
+});
+(function animateGears(){
+  rots=rots.map((r,i)=>r+gearData[i].speed);
+  gearsSvg.querySelectorAll(".gear-group").forEach((gr,i)=>{
+    gr.setAttribute("transform",`translate(${gearData[i].cx},${gearData[i].cy}) rotate(${rots[i]})`);
+  });
+  requestAnimationFrame(animateGears);
+})();
+
+const accWrap=document.getElementById('accordion');
+let openIdx=null;
+function renderAcc(){
+  accWrap.innerHTML = ACC_DATA.map((item,i)=>{
+    const isOpen = openIdx===i;
+    return `<div class="acc-item ${isOpen?'open':''}" data-open="${isOpen}">
+      <button type="button" class="acc-header" aria-expanded="${isOpen}" data-i="${i}">
+        <div class="acc-left"><span class="acc-gear">${gearIconSVG}</span><span>${item.title}</span></div>
+        <span class="acc-chevron" style="display:flex;gap:6px;align-items:center"><span style="font-size:10px;opacity:0.7">${isOpen?'OPEN':'CLOSED'}</span><span>${isOpen?'∧':'⌄'}</span></span>
+      </button>
+      <div class="acc-panel"><div class="acc-panel-inner"><div class="acc-inner">${item.html}</div></div></div>
+    </div>`;
+  }).join('');
+  accWrap.querySelectorAll('.acc-header').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const i=parseInt(btn.getAttribute('data-i'));
+      openIdx = openIdx===i?null:i;
+      renderAcc();
+    });
+  });
+}
+renderAcc();
+</script>

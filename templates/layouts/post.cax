@@ -1,0 +1,30 @@
+---
+layout: default.cax
+---
+    <main class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <article class="card shadow-sm border-0 p-4 p-md-5 rounded-4 bg-white">
+                    <header class="mb-4">
+                        <h1 class="fw-bold display-6 mb-2"><a href="{{ url }}">{{ title }}</a></h1>
+                        <p class="text-muted lead fs-6">{{ description }}</p>
+                         {% if image %}<a href="{{ url }}">
+                    <img class="cover-img shadow-sm mt-3 mb-1" 
+                    width="100%" height="100%" alt="{{title}}"
+                    src="{{image}}" loading="eager"/></a>{% endif %}
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            {% for tag in tags %}
+                            <a href="/tags/{{ tag }}/" class="badge text-white bg-primary me-1">#{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </header>
+                    <hr class="opacity-25 mb-4">
+                    <div class="row"><div class="col-lg-1"></div><div class="content-body text-secondary col-lg-8">{{ content }}</div><div class="col-lg-1"></div></div>
+                    <div class="mt-5 pt-4 row">
+                        {% if prev_link %}<div class="col-6 p-3 card bg-primary">{{ prev_link }}</div>{% endif %}
+                        {% if next_link %}<div class="col-6 p-3 card text-end bg-primary">{{ next_link }}</div>{% endif %}
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>

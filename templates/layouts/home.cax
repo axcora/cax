@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axcora-css@1.0.1/axcora.min.css">
+    <link href="{{metadata.url}}/css/style.css" rel="stylesheet">
+</head>
+<body>
+{% include header.cax %}
+
+<div class="container">
+    <h4>Centered Content</h4>
+    <img src="{{image}}" alt="{{hero_title}}" 
+    class="img-fluid">
+    <p>{{hero_description}}</p>
+</div>
+
+
+    <div class="card p-3 my-3">
+        <h5>Features:</h5>
+        {% for f in metadata.features %}
+        <div>{{ f }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="my-3">
+        <a href="{{ metadata.social.github }}" class="btn btn-outline-dark">GitHub</a>
+        <a href="{{ metadata.social.twitter }}" class="btn btn-outline-primary">Twitter</a>
+    </div>
+
+<main class="container">
+{{ content }}
+</main>
+
+{% include footer.cax %}
+
+</body>
+</html>

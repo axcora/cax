@@ -1,0 +1,29 @@
+<main class="container py-4">
+  <div class="row justify-content-center">
+  <div class="col-lg-8 p-3">
+    <article class="card shadow-sm border-0 p-5 p-md-5 rounded-4 bg-white">
+      <div class="content-body">
+      <img class="img-icon" alt="{{title}}"
+      src="{{icon}}" loading="lazy" width="40" height="40"/>
+          {{ content }}
+      </div>
+    </article>
+    </div>
+    <div class="col-lg-4 p-3">
+    <div class="card p-5">
+      <img class="img-icon" 
+      src="{{update.image}}" alt="{{update.title}}" loading="lazy" width="40" height="40"/>
+    <h3 class="mb-3"><a href="{{url}}">{{update.title}}</a></h3>
+    <ul>{% for post in collections.minimal | limit(4) %}
+<li class="mt-2"><a class="text-dark" href="{{post.url}}">
+{{post.title}}
+</a></li>
+{% endfor %}
+</ul>
+<a href="{{update.button.url}}" class="btn btn-primary mt-3">
+{{update.button.text}}
+</a>
+    </div>
+    </div>
+  </div>
+</main>

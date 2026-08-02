@@ -1,0 +1,6 @@
+<footer class="text-center py-5 text-muted border-top bg-white mt-5">
+    <div class="container">
+        <small class="text-secondary">
+        &copy; 2026 Built with High Performance C Architecture. <a class="text-dark" href="https://cax.axcora.com">CAX SSG</a> feat <a href="https://ssg.axcora.com/examples/"  class="text-dark">Axcora CSS</a></small>
+    </div>
+</footer>

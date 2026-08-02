@@ -1,0 +1,29 @@
+{
+  "title": "Static Site Generator Built in Pure C",
+  "description": "Blazing fast zero dependencies,and no runtime overhead.",
+  "image": "/img/banner.webp",
+  "logo": "/img/logo.webp",
+  "url": "/starter/",
+  "author": "AXCORA",
+  "navbar_title": "CAX SSG BLOG",
+  "navbar_list": [
+    { "name": "Home", "url": "/starter/" },
+    { "name": "Article", "url": "/posts/" },
+    { "name": "Documentation", "url": "/about/" },
+    { "name": "Download", "url": "https://creativitaz.gumroad.com/l//cax" },
+    { "name": "Github", "url": "https://github.com/mesinkasir/cax" }
+  ],
+  "footer": [
+    { "name": "Github", "url": "https://github.com/mesinkasir/cax" },
+    { "name": "Download", "url": "https://creativitaz.gumroad.com/l/cax" },
+    { "name": "Hire", "url": "https://www.fiverr.com/creativitas/design-your-modern-website-using-jekyll" }
+  ],
+  "hero": {
+    "badge": "✦ CAX SSG V1.0",
+    "title": "Static Site Generator\nBuilt in Pure C",
+    "subtitle": "Blazing fast, zero dependencies,\nand no runtime overhead.",
+    "description": "CAX SSG processes Markdown with frontmatter, renders templates,\nand generates a complete static website in under 50 milliseconds.",
+    "cta_text": "Get Started",
+    "cta_url": "/posts/"
+  }
+}

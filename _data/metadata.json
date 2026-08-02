@@ -1,0 +1,48 @@
+{
+  "title": "Welcome to CAX Engine",
+  "description": "Blazing fast static site generator written in pure C.",
+  "author": "AXCORA",
+  "url": "http://localhost:8080",
+  "logo": "/img/logo.webp",
+  "image": "/img/banner.webp",
+  "nav_home_title": "CAX SSG",
+  "nav_home": [
+    { "name": "Home", "url": "#home" },
+    { "name": "About", "url": "#mission" },
+    { "name": "Features", "url": "#features" },
+    { "name": "Documentation", "url": "#get-started" },
+    { "name": "Support", "url": "#support" },
+    { "name": "Download", "url": "#mission" },
+    { "name": "Github", "url": "https://github.com/mesinkasir/cax" }
+  ],
+  "terminal": [
+    { "text": "git clone https://github.com/mesinkasir/cax" },
+    { "text": "cd cax" },
+    { "text": "cax build" },
+    { "text": "cax start" }
+  ],
+  "site": {
+    "title": "Welcome to CAX Engine",
+    "description": "Blazing fast static site generator written in pure C.",
+    "author": "CAX SSG",
+    "url": "http://localhost:8080"
+  },
+  "paypal": {
+    "name": "PayPal",
+    "text": "One-time patronage. Like buying the watchmaker a coffee — or a brass ingot",
+    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JVZVXBC4N9DAN",
+    "button": "Donate Via PayPal"
+  },
+  "gumroad": {
+    "name": "Gumroad",
+    "text": "Purchase the Atelier Edition — includes premium templates and horological guides.",
+    "url": "https://creativitaz.gumroad.com/coffee",
+    "button": "Get Atelier Edition"
+  },
+  "github": {
+    "name": "GitHub",
+    "text": "Star, fork, and forge. Contributions reviewed within 48 hours — chronometer precision.",
+    "url": "https://github.com/sponsors/mesinkasir",
+    "button": "Star On Github"
+  }
+}

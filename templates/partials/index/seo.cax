@@ -1,0 +1,51 @@
+<meta name="google-site-verification" content="fJTzwsNcz2AtRxQpJZzU7db7TLPdR_lKSAXfyWDtHB4">
+<meta name="google-site-verification" content="Xi3WpckDbMBvm1pdlc5XukNoA9uWDmnExIiOeaTOxq0">
+<title>{{ title or metadata.title }}</title>
+    <meta name="title" content="{{ title or metadata.title }}">
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="author" content="{{ author or metadata.author }}">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="{{ metadata.logo }}">
+    <link rel="apple-touch-icon" href="{{ metadata.logo }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ metadata.url }}">
+    <meta property="og:title" content="{{ title or metadata.title }}">
+    <meta property="og:description" content="{{ description or metadata.description }}">
+    <meta property="og:image" content="{{ metadata.url }}{{ metadata.image }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ metadata.url }}">
+    <meta name="twitter:title" content="{{ title or metadata.title }}">
+    <meta name="twitter:description" content="{{ description or metadata.description }}">
+    <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.image }}">
+<link rel="canonical" href="{{ metadata.url }}">
+<meta name="generator" content="CAX SSG - Static Site Generator in C">
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": "{{ metadata.url }}",
+        "name": "{{ title or metadata.title }}",
+        "description": "{{ description or metadata.description }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ metadata.author }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ metadata.author }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ metadata.url }}{{ metadata.logo }}"
+            }
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ metadata.url }}{{ metadata.image }}"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ metadata.url }}"
+        }
+    }
+    </script>
+<link href="{{metadata.url}}/css/index.css" rel="stylesheet">

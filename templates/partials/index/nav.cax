@@ -1,0 +1,16 @@
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="#home" class="brand">
+            <img src="{{ metadata.logo }}" alt="{{ metadata.title }}" loading="eager">
+            <span>{{ metadata.nav_home_title }}</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            {% for n in metadata.nav_home %}
+                <a href="{{ n.url }}">{{ n.name }}</a>
+            {% endfor %}
+        </div>
+        <button type="button" class="hamburger" aria-label="menu" id="hamburger">
+            <span id="h1"></span><span id="h2"></span><span id="h3"></span>
+        </button>
+    </div>
+</nav>

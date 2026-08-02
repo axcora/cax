@@ -1,0 +1,4 @@
+---
+layout: starter/base.cax
+---
+{% include starter/home.cax %}

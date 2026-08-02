@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} - {{ metadata.title }}</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axcora-css@1.0.1/axcora.min.css">
+</head>
+<body>
+    {% include header.cax %}
+    <main class="container my-5">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+        
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                        <p>{{ post.description }}</p>
+                        <small>{{ post.date }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav class="d-flex justify-content-between mt-5">
+            {% if pagination.prev_url %}<a href="{{ pagination.prev_url }}">← Prev</a>{% endif %}
+            {% if pagination.next_url %}<a href="{{ pagination.next_url }}">Next →</a>{% endif %}
+        </nav>
+    </main>
+    {% include footer.cax %}
+</body>
+</html>

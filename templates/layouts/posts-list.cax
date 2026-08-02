@@ -1,0 +1,37 @@
+---
+layout: default.cax
+---
+    <div class="container p-3">
+    <div class="col-12 p-3 mb-3 text-center">
+        <h1>{{hero.title}}</h1>
+        <p>{{ hero.description }}</p>
+    </div>
+       
+        <div class="row">
+            {% for post in pagination.items %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                    {% if post.image %}<a href="{{ post.url }}">
+                    <img class="img-fluid shadow-sm" width="100%" height="100%" alt="{{post.title}}"
+                    src="{{post.image}}" loading="laxy"/></a>{% endif %}
+                        <h3 class="card-title mb-2">
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </h3>
+                        <p class="card-text">{{ post.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav class="text-center">
+                {% if pagination.prev_url %}
+                <a href="{{ pagination.prev_url }}" class="btn me-2 btn-primary">← Prev</a>
+                {% endif %}
+                {% if pagination.next_url %}
+                <a href="{{ pagination.next_url }}" class="btn ms-2 btn-primary">Next →</a>
+                {% endif %}
+        </nav>
+    </div>
+    

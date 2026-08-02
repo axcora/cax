@@ -1,0 +1,30 @@
+<section class="container pb-5">
+  <div class="row g-4">
+    {% for card in card_info %}
+    <div class="col-md-4">
+      <div class="card h-100">
+      <div class="card-header">
+      <img class="img-icon" alt="{{card.title}}"
+      src="{{card.image}}" loading="lazy" width="40" height="40"/>
+      <div class="row">
+      <div class="col-lg-6">
+      <span class="badge badge-warning badge-sm p-1">{{ card.description }}</span>
+      </div>
+      <div class="col-lg-6">
+          <h3 class="card-title text-end">
+          <a href="{{url}}" class="text-white">
+          {{ card.title }}</a></h3>
+          </div>
+       </div>
+       </div>
+        <div class="card-body">
+          <p class="card-text text-muted">{{ card.text }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-0 text-center">
+          <small class="text-muted">C Static Site Generator | <strong>CAX</strong></small>
+        </div>
+      </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<section id="mission" class="section">
+<div class="container">
+<h2 class="section-title"><a href="{{metadata.url}}" class="text-white">{{about.title}}</a></h2>
+<p class="section-sub">{{about.description}}</p>
+<p class="section-sub"><a href="{{about.button.url}}" class="btn btn-ghost">{{about.button.text}}</a> <a href="{{about.button1.url}}" class="btn btn-ghost">{{about.button1.text}}</a></p>
+<p class="section-sub">{{about.content.text}}<br/>{{about.content.text1}}</p>
+<div class="mission-grid trans">
+<div class="parch-card">
+<div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="0.8">
+<circle cx="12" cy="12" r="9"/>
+<circle cx="12" cy="12" r="7.5" stroke-dasharray="0.5 2"/>
+<path d="M12 3v1.5M12 19.5v1.5M3 12h1.5M19.5 12h1.5"/>
+<path d="M5.5 5.5l1 1M17.5 17.5l-1-1M5.5 18.5l1-1M17.5 5.5l-1 1"/>
+<path d="M8 8l1.5 1.5M16 16l-1.5-1.5M8 16l1.5-1.5M16 8l-1.5 1.5"/>
+<path d="M12 5c-1.5 2-2 4-1.5 5.5"/>
+<path d="M12 19c1.5-2 2-4 1.5-5.5"/>
+<path d="M5 12c2 1.5 4 2 5.5 1.5"/>
+<path d="M19 12c-2 1.5-4 2-5.5 1.5"/>
+<circle cx="12" cy="12" r="3"/>
+<circle cx="12" cy="12" r="1.5" stroke-dasharray="0.3 0.8"/>
+<circle cx="12" cy="12" r="0.7" fill="#b8860b"/>
+</svg>
+</div>
+<h3><a href="{{metadata.url}}">{{about.mission.title}}</a></h3>
+<p>{{about.mission.text}}</p>
+</div>
+<div class="parch-card">
+<div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="0.8">
+<rect x="2" y="2" width="20" height="20" rx="3"/>
+<rect x="4.5" y="4.5" width="15" height="15" rx="2" stroke-dasharray="1 2"/>
+<path d="M5 5l1.5 1.5M19 5l-1.5 1.5M5 19l1.5-1.5M19 19l-1.5-1.5"/>
+<path d="M12 6v12M6 12h12"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="12" cy="12" r="2.5" stroke-dasharray="0.5 1"/>
+<circle cx="12" cy="12" r="1.2" fill="#b8860b"/>
+<path d="M12 6c-1 1-1.5 2.5-1 4"/>
+<path d="M12 18c1-1 1.5-2.5 1-4"/>
+<path d="M6 12c1 1 2.5 1.5 4 1"/>
+<path d="M18 12c-1 1-2.5 1.5-4 1"/>
+</svg>
+</div>
+<h3><a href="{{metadata.url}}">{{about.vision.title}}</a></h3>
+<p>{{about.vision.text}}</p>
+</div>
+</div>
+</div>
+</section>
