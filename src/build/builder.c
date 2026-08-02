@@ -445,7 +445,6 @@ void cax_builder_run(void) {
     remove_livereload_script();
 
 #ifdef _WIN32
-    // FIX WINDOWS CMD - NO UNICODE
     printf("\n------------------------------------------\n");
     printf(" CAX v0.4s C Static Site Generator\n");
     printf(" by Axcora Technology - cax.axcora.com\n");
@@ -462,7 +461,7 @@ void cax_builder_run(void) {
 }
 
 void cax_builder_start_server(void) {
-    cax_builder_run();
+    cax_builder_run(); // BERSIH - GAK ADA LIVE RELOAD
 #ifdef _WIN32
     printf("\n [SERVER] http://localhost:8080\n");
     printf(" [INFO] Serving site/ folder\n\n");
@@ -498,7 +497,8 @@ void cax_builder_start_with_watch(void){
         time_t d=scan_dir("_data"); time_t p=scan_dir("public");
         if(c!=lc||t!=lt||d!=ld||p!=lp){
             printf(" [CHANGE] rebuilding...\n");
-            cax_builder_run(); inject_livereload_script();
+            cax_builder_run();
+            inject_livereload_script();
             printf(" [DONE] rebuilt\n");
             lc=c; lt=t; ld=d; lp=p;
         }
@@ -515,7 +515,8 @@ void cax_builder_start_with_watch(void){
         time_t c=scan_dir("content"); time_t t=scan_dir("templates"); time_t d=scan_dir("_data"); time_t p=scan_dir("public");
         if(c!=lc||t!=lt||d!=ld||p!=lp){
             printf(" [change] rebuilding...\n");
-            cax_builder_run(); inject_livereload_script();
+            cax_builder_run();
+            inject_livereload_script(); // <--- REBUILD + INJECT LAGI!
             printf(" ✔ rebuilt\n"); lc=c; lt=t; ld=d; lp=p;
         }
     }
