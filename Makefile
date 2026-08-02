@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -O3 -Iinclude
+CFLAGS = -Wall -Wextra -std=c11 -O3 -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -D_GNU_SOURCE
 
 SRC = src/main.c \
       src/utils/file_utils.c \

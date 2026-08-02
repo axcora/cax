@@ -27,9 +27,9 @@ jobs:
       - name: Build CAX SSG
         run: |
           make clean || true
-          make
+          make linux
           chmod +x ./cax
-          ./cax --version || ./cax build --help || true
+          ls -lh ./cax
 
       - name: Build Site
         run: ./cax build
