@@ -2,7 +2,7 @@
   "title": "Welcome to CAX Engine",
   "description": "Blazing fast static site generator written in pure C.",
   "author": "AXCORA",
-  "url": "http://localhost:8080",
+  "url": "https://cax.axcora.com",
   "logo": "/img/logo.webp",
   "image": "/img/banner.webp",
   "nav_home_title": "CAX SSG",
@@ -25,7 +25,7 @@
     "title": "Welcome to CAX Engine",
     "description": "Blazing fast static site generator written in pure C.",
     "author": "CAX SSG",
-    "url": "http://localhost:8080"
+    "url": "https://cax.axcora.com"
   },
   "paypal": {
     "name": "PayPal",
