@@ -18,8 +18,11 @@
   "terminal": [
     { "text": "git clone https://github.com/mesinkasir/cax" },
     { "text": "cd cax" },
-    { "text": "cax build" },
-    { "text": "cax start" }
+    { "text": "mingw32-make       # For Windows OS" },
+    { "text": "make linux         # For Linux or MacOs" },
+    { "text": "cd cax" },
+    { "text": "cax build          # push site folder on hosting" },
+    { "text": "cax start          # open http://localhost:8080" }
   ],
   "site": {
     "title": "Welcome to CAX Engine",

@@ -1,8 +1,6 @@
 <script>
 const CODE_LINES = [
-  {% for line in metadata.terminal %}
-  "$ {{ line.text }}",
-  {% endfor %}
+  {% for line in metadata.terminal %}"$ {{ line.text }}",{% endfor %}
 ];
 const ACC_DATA = [
 
@@ -20,10 +18,9 @@ make -j4
 # Install globally
 sudo make install
 # or copy binary manually
-sudo cp cax /usr/local/bin/
+sudo cp cax /usr/local/bin/</code></pre>
 
-# Verify installation
-cax --version</code></pre><h4>Windows</h4><pre><code># Using MinGW or MSYS2
+<h4>Windows</h4><pre><code># Using MinGW or MSYS2
 git clone https://github.com/mesinkasir/cax.git
 cd cax
 
@@ -31,10 +28,9 @@ cd cax
 mingw32-make
 
 # The binary cax.exe is ready to use
-# Add to PATH or use directly
+# Add to PATH or use directly</code></pre>
 
-# Verify installation
-cax.exe --version</code></pre><h4>macOS (Apple Silicon &amp; Intel)</h4><pre><code># Install Xcode Command Line Tools first
+<h4>macOS (Apple Silicon &amp; Intel)</h4><pre><code># Install Xcode Command Line Tools first
 xcode-select --install
 
 # Clone and build
@@ -43,10 +39,9 @@ cd cax
 make linux
 
 # Install
-sudo cp cax /usr/local/bin/
+sudo cp cax /usr/local/bin/</code></pre>
 
-# Verify
-cax --version</code></pre><p>The binary is a single static executable — <strong>~1.2MB</strong>. No Node.js, no Python, no Ruby, no runtime.</p>`},
+<p>The binary is a single static executable — <strong>~1.2MB</strong>. No Node.js, no Python, no Ruby, no runtime.</p>`},
 
 {title:"3. Customize Your Site", html:`<p>All elegance is controlled via <code>metadata.json</code> — no labyrinth of YAML.</p><pre><code>{
   "title": "Atelier No. 5",
@@ -151,7 +146,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 }));
 
 const codePre = document.getElementById('codePre');
-let linesState=["","","","",""], charIdx=[0,0,0,0,0], lineIdx=0;
+let linesState=["","","","","","",""], charIdx=[0,0,0,0,0,0,0], lineIdx=0;
 function renderCode(){
   codePre.innerHTML = CODE_LINES.map((full,i)=>{
     const txt = linesState[i];
