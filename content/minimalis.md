@@ -4,7 +4,7 @@ title: CAX - Blazing Fast Static Site Generator in Pure C
 description: 0.4s builds, zero dependencies, Jekyll-inspired DX. Written in pure C.
 icon: /img/quick.svg
 hero:
-  title: CAX Enterprise SSG
+  title: CAX Enterprise C SSG
   image: /img/astronot.svg
   description: Blazing fast static site generator written in pure C. Jekyll-inspired frontmatter, Liquid-like templating, 0.4s for 1000 pages.
   text: No Node, No Go, No Rust. Just pure C, zero dependencies, and raw speed. Built for developers who love control and performance.
