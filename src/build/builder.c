@@ -18,11 +18,14 @@
 #include <dirent.h>
 #include <time.h>
 #include <sys/stat.h>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
-
+// ================= HELPER UMUM =================
 static char *clean_trim(char *str) {
     if (!str) return NULL;
     while (isspace((unsigned char)*str)) str++;
@@ -66,7 +69,7 @@ static time_t scan_dir(const char *dir){
     return max;
 }
 
-
+// ================= HELPER FEED FIX =================
 static void json_escape(const char *src, char *dst, size_t dst_size){
     size_t j=0;
     if(!src){ dst[0]='\0'; return; }
@@ -101,7 +104,7 @@ static void xml_escape_url(const char *src, char *dst, size_t dst_size){
     dst[j]='\0';
 }
 
-
+// CDATA aman: ganti ]]> jadi ]]><![CDATA[>
 static void write_cdata(FILE *f, const char *s){
     if(!s) return;
     for(size_t i=0; s[i]; ){
@@ -171,6 +174,7 @@ static void cax_generate_feeds(CAXArray *all_items, CAXObject *global_data){
     size_t sl = strlen(site_url);
     if(sl>0 && site_url[sl-1]=='/') site_url[sl-1]='\0';
 
+    // waktu build
     time_t now = time(NULL);
     struct tm *gmt = gmtime(&now);
     char now_rfc822[128];
@@ -232,6 +236,7 @@ static void cax_generate_feeds(CAXArray *all_items, CAXObject *global_data){
     fprintf(rss, "</channel>\n</rss>\n");
     fclose(rss);
 
+    // copy feed.xml ke rss.xml biar dua-duanya ada
     {
         char *content = cax_read_file("site/feed.xml");
         if(!content) content = cax_read_file("site/rss.xml");
@@ -675,7 +680,7 @@ void cax_builder_run(void) {
     cax_tags_generate(all_collections_master, "site", global_data);
     cax_sitemap_generate_full(all_collections_master, global_data, "site", pagination_controllers);
 
-    
+    // ===== FIX FEED UNTUK OPEN SOURCE =====
     cax_generate_feeds(all_collections_master, global_data);
 
     for (int i = 0; i < all_collections_master->count; i++) if (all_collections_master->items[i]) cax_object_free(all_collections_master->items[i]);
